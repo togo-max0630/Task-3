@@ -1,0 +1,51 @@
+<div class="container"> 
+<div class="row"> 
+<div class="col-xs-3" >
+<h1>User info</h1>
+<%= attachment_image_tag @user, :profile_image ,fallback: "no_image.jpg"%>
+<h4>name</h4>
+<%= @user.name %>
+<h4>introduction</h4>
+<%= @user.introduction %>
+
+
+<h1>New book</h1>
+<%= form_for(@book) do |f| %>
+<h4>Title</h4>
+<%= f.text_field :title %>
+<h4>Opinion</h4>
+<%= f.text_area :body %>
+<br> <button class="btn btn-primary">Create Book</button></br>
+<% end %>
+</div>
+
+<div class="col-xs-9">
+<h1>Users</h1>
+<table class="table">
+<thead>
+<tr>
+<th></th>
+<th>image</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<% @users.each do |user| %>
+<tr>
+<td></td>
+<td>
+<%= attachment_image_tag user, :profile_image ,fallback: "no_image.jpg"%>
+</td>
+<td>
+<%= user.name %>
+</td>
+<td>
+<%= link_to "Show", user_path(user.id) %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
+</div>
